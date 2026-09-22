@@ -30,7 +30,10 @@ This repository provides an autonomous mathematical pipeline that takes crowd-so
 * **No Database Required**: Decoupled from heavy PostgreSQL / PostGIS infrastructure — runs out-of-the-box using standard scientific Python (`numpy`, `scipy`, `pandas`, `matplotlib`, `pyproj`, `folium`).
 * **Slant-Range Antenna Correction**: Compensates for tower height differentials ($h_{\text{diff}} \approx 35.5\text{ m}$) to prevent severe near-field estimation bias.
 * **Anti-Clustering Weighting**: Prevents vehicle stops at traffic lights from skewing the spatial optimization via inverse-density cell weights:
-  $$w_{\text{density}} = \max\left(0.2, \frac{1}{\text{count}^{0.3}}\right)$$
+
+```math
+w_{\text{density}} = \max\left(0.2, \; \frac{1}{\text{count}^{0.3}}\right)
+```
 * **Physical Timing Advance Boundary**: Asymmetric cost ensuring actual distance satisfies Line-of-Sight propagation physics ($d \ge d_{\text{radio}}$ with building shadow tolerance).
 * **Multi-Start Optimization**: Avoids local minima using power-weighted centroids, peak RSRP seeds, and orthogonal PCA projections.
 
@@ -59,19 +62,39 @@ The repository includes a curated sample dataset (`data/sample_lte_measurements.
 ### 1. Timing Advance Ground Distance & Slant Correction
 In 3GPP LTE, Timing Advance ($TA \in [0, 63]$) represents propagation delay in units of $16 \times T_s \approx 78.125\text{ m}$.
 Accounting for tower height $h_{\text{mast}} = 37\text{ m}$ and mobile receiver $h_{\text{ue}} = 1.5\text{ m}$:
-$$d_{\text{ground}} = \sqrt{\max\left(0, (TA \times 78.125)^2 - (37.0 - 1.5)^2\right)}$$
+
+```math
+d_{\text{ground}} = \sqrt{\max\left(0, \; (TA \times 78.125)^2 - (37.0 - 1.5)^2\right)}
+```
 
 ### 2. Log-Distance Path Loss Propagation
 When Timing Advance is unavailable or for signal calibration:
-$$PL(d) = PL_0 + 10 \cdot n \cdot \log_{10}(d) + X_\sigma$$
-$$d_{\text{est}}(RSRP) = 10^{\frac{-RSRP - PL_0}{10 \cdot n}}$$
+
+```math
+PL(d) = PL_0 + 10 \cdot n \cdot \log_{10}(d) + X_\sigma
+```
+
+```math
+d_{\text{est}}(RSRP) = 10^{\frac{-RSRP - PL_0}{10 \cdot n}}
+```
+
 Parameters $PL_0$ and exponent $n$ are calibrated via Robust Iteratively Reweighted Least Squares with Median Absolute Deviation (MAD) residual weighting.
 
 ### 3. Huber Loss Multilateration
-The Cartesian tower position $(x_0, y_0)$ in metric UTM coordinates minimizes:
-$$\min_{x_0, y_0} \sum_{i=1}^N w_i \cdot L_\delta\left(\sqrt{(x_0 - x_i)^2 + (y_0 - y_i)^2} - d_{\text{target}, i}\right) + \text{Cost}_{\text{physics}} + \text{Cost}_{\text{repulsion}}$$
-where $L_\delta(r)$ is the Huber loss:
-$$L_\delta(r) = \begin{cases} \frac{1}{2} r^2 & \text{for } |r| \le \delta \\ \delta \left(|r| - \frac{1}{2}\delta\right) & \text{for } |r| > \delta \end{cases}$$
+The Cartesian tower position **(x₀, y₀)** in metric UTM coordinates minimizes the objective loss:
+
+```math
+\min_{x_0, y_0} \sum_{i=1}^N w_i \cdot L_\delta\left(\sqrt{(x_0 - x_i)^2 + (y_0 - y_i)^2} - d_{\text{target}, i}\right) + \text{Cost}_{\text{physics}} + \text{Cost}_{\text{repulsion}}
+```
+
+where **L_δ(r)** is the Huber loss function:
+
+```math
+L_\delta(r) = \begin{cases} 
+\frac{1}{2} r^2 & \text{for } |r| \le \delta \\ 
+\delta \left(|r| - \frac{1}{2}\delta\right) & \text{for } |r| > \delta 
+\end{cases}
+```
 
 ---
 
