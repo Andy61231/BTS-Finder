@@ -1,4 +1,4 @@
-# Nokia BTS Finder: Cellular Base Station Localization & Propagation Modeling Demo
+#BTS Finder: Cellular Base Station Localization & Propagation Modeling Demo
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
