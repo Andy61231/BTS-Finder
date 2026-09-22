@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-run_demo.py - Master runner for the Nokia BTS Localization Worked Example.
+run_demo.py - Master runner for the Cellular BTS Localization Worked Example.
 
 Usage:
   # Run the default worked example on the 9 target eNodeBs:
@@ -53,7 +53,7 @@ from src.visualization import (
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
-        description="Nokia BTS Localization - Worked Example & Academic Reproduction Pipeline"
+        description="Cellular BTS Localization - Worked Example & Academic Reproduction Pipeline"
     )
     parser.add_argument(
         "--input", "-i",
@@ -130,7 +130,7 @@ def main():
     input_file = resolve_input_file(args.input)
 
     print("=" * 75)
-    print("      NOKIA BTS LOCALIZATION - WORKED EXAMPLE & CITATION DEMO")
+    print("      CELLULAR BTS LOCALIZATION - WORKED EXAMPLE & CITATION DEMO")
     print("=" * 75)
     print(f"[*] Input File     : {input_file}")
     print(f"[*] Output Dir     : {args.output_dir}")

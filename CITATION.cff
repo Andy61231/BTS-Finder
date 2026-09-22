@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this software or empirical drive-test dataset in your research or thesis, please cite it as below."
 authors:
-  - family-names: "Nokia BTS Research Team"
+  - family-names: "Cellular BTS Research Team"
     given-names: "Licenta / Academic Project"
-title: "Nokia BTS Finder: Robust Multilateration and Path Loss Modeling from Crowdsourced Cellular Drive-Test Measurements"
+title: "Cellular BTS Finder: Robust Multilateration and Path Loss Modeling from Crowdsourced Cellular Drive-Test Measurements"
 version: 1.0.0
 date-released: 2026-03-30
-url: "https://github.com/your-username/nokia-bts-localization-demo"
+url: "https://github.com/your-username/cellular-bts-localization-demo"
 keywords:
   - "cellular networks"
   - "LTE"
@@ -16,7 +16,7 @@ keywords:
   - "huber loss"
   - "convex hull"
   - "drive-test"
-  - "Nokia"
+  - "base transceiver station"
   - "Network Survey"
 license: MIT
 type: software

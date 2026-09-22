@@ -1,4 +1,4 @@
-#BTS Finder: Cellular Base Station Localization & Propagation Modeling Demo
+# Cellular BTS Finder: Base Station Localization & Propagation Modeling Demo
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -42,13 +42,13 @@ The repository includes a curated sample dataset (`data/sample_lte_measurements.
 
 | eNodeB ID | Operator / Equipment Typology | Raw Records | TA Valid Records | Mean RSRP |
 | :--- | :--- | :---: | :---: | :---: |
-| **80609** | Ericsson Macro (Orange) | 648 | 611 | -84.6 dBm |
-| **101811** | Nokia Macro (Digi Mobil) | 391 | 362 | -95.7 dBm |
-| **240151** | Nokia Macro (Digi Mobil) | 290 | 270 | -99.6 dBm |
-| **200643** | Nokia Macro (Digi Mobil) | 227 | 183 | -103.6 dBm |
+| **80609** | Macro Site (Orange) | 648 | 611 | -84.6 dBm |
+| **101811** | Macro Site (Digi Mobil) | 391 | 362 | -95.7 dBm |
+| **240151** | Macro Site (Digi Mobil) | 290 | 270 | -99.6 dBm |
+| **200643** | Macro Site (Digi Mobil) | 227 | 183 | -103.6 dBm |
 | **950063** | Micro Cell Cluster (Digi Mobil) | 227 | 203 | -91.1 dBm |
-| **82039** | Ericsson Macro (Orange) | 40 | 39 | -89.8 dBm |
-| **201813** | Nokia Macro (Digi Mobil) | 32 | 28 | -93.0 dBm |
+| **82039** | Macro Site (Orange) | 40 | 39 | -89.8 dBm |
+| **201813** | Macro Site (Digi Mobil) | 32 | 28 | -93.0 dBm |
 | **950064** | Micro Cell Cluster (Digi Mobil) | 13 | 13 | -84.1 dBm |
 | **950062** | Micro Cell Cluster (Digi Mobil) | 2 | 2 | -80.5 dBm |
 
@@ -79,8 +79,8 @@ $$L_\delta(r) = \begin{cases} \frac{1}{2} r^2 & \text{for } |r| \le \delta \\ \d
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/your-username/nokia-bts-localization-demo.git
-cd nokia-bts-localization-demo
+git clone https://github.com/your-username/cellular-bts-localization-demo.git
+cd cellular-bts-localization-demo
 pip install -r requirements.txt
 ```
 
@@ -119,7 +119,7 @@ Running `run_demo.py` produces the following files in `output/`:
 ## 📂 Repository Structure
 
 ```
-nokia-bts-localization-demo/
+cellular-bts-localization-demo/
 │
 ├── .gitignore
 ├── LICENSE                          # MIT Open-Source License
@@ -154,11 +154,11 @@ If you use this code, methodology, or empirical dataset in an academic paper, gr
 
 ### BibTeX
 ```bibtex
-@software{nokia_bts_finder_2026,
-  author = {Nokia BTS Research Project},
-  title = {Nokia BTS Finder: Robust Multilateration and Path Loss Modeling from Crowdsourced Cellular Drive-Test Measurements},
+@software{cellular_bts_finder_2026,
+  author = {Cellular BTS Research Team},
+  title = {Cellular BTS Finder: Robust Multilateration and Path Loss Modeling from Crowdsourced Cellular Drive-Test Measurements},
   year = {2026},
-  url = {https://github.com/your-username/nokia-bts-localization-demo},
+  url = {https://github.com/your-username/cellular-bts-localization-demo},
   version = {1.0.0}
 }
 ```
